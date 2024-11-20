@@ -9,6 +9,8 @@ Tutorial 👍(usei o VScode com Python 3.12.7):
   3° - criar uma maquina virtual.
   Como criar:
   python -m venv nome_do_ambiente_virtual
+  
+  (normalmente se usa myvenv, mas pode ser qualquer nome)
 
   4° - ativar o ambiente.
   Ativando o ambiente:
