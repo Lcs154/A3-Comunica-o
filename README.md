@@ -2,7 +2,7 @@ Tutorial 👍(usei o VScode com Python 3.12.7):
 
   1° - Abra um novo Terminal de comando
 
-  2° - Baixando o virtualenv
+  2° - Baixando o virtualenv.
   Como baixa?:
   pip install virtualenv
 
@@ -10,11 +10,11 @@ Tutorial 👍(usei o VScode com Python 3.12.7):
   Como criar:
   python -m venv nome_do_ambiente_virtual
 
-  4° - ativar o ambiente
+  4° - ativar o ambiente.
   Ativando o ambiente:
   nome_do_ambiente_virtual\Scripts\activate
 
-  5° - baixar os requirements
+  5° - baixar os requirements.
   Configurando o ambiente(se a versão do python for inferior pode ser que não funcione):
   pip install -r requirements.txt
 
