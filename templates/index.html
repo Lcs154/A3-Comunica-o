@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicação Interplanetária</title>
+    <link rel="stylesheet" href="/virtual/static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if tema %}
+    <div class="principal">
+        <h1 id="tema" style="
+        background-image: url('{{ tema }}');
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        ">Comunicação Interplanetária</h1>
+    </div>
+    {% endif %}
+    <div class="container">
+        <div class="form">
+            <p><b>Selecione um planeta para receber os dados.</b></p>
+            <div class="formulario">
+                <form method="POST" action="/">
+                    <input type="radio" name="planeta" value="mercurio" id="mercurio">
+                    <label for="mercurio">Mercúrio</label><br>
+    
+                    <input type="radio" name="planeta" value="venus" id="venus">
+                    <label for="venus">Vênus</label><br>
+    
+                    <input type="radio" name="planeta" value="marte" id="marte">
+                    <label for="marte">Marte</label><br>
+    
+                    <input type="radio" name="planeta" value="jupiter" id="jupiter" required>
+                    <label for="jupiter">Júpiter</label><br>
+    
+                    <input type="radio" name="planeta" value="saturno" id="saturno">
+                    <label for="saturno">Saturno</label><br>
+    
+                    <input type="radio" name="planeta" value="urano" id="urano">
+                    <label for="urano">Urano</label><br>
+    
+                    <input type="radio" name="planeta" value="netuno" id="netuno">
+                    <label for="netuno">Netuno</label><br>
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        {% if resultado %}
+        <div class="dados-simulados">
+            <p id="titulo"><b>Recebimento de dados</b></p>
+            <div class="infos">
+                <div class="resultado">
+                    <p>{{valor}} sincronizará com a Terra em {{resultado}} dias!</p>
+                    <p>Supondo que a sonda {{sonda}} esteja na órbita de {{valor}} o tempo para recebimento de dados será de: ≅ {{tempo}}</p>
+                    <p id="obs">OBS: interferências como explosões solares ou perda de dados foram totalmente desconsideradas</p>
+                </div>
+            </div>
+
+            <h1 id="sobre"><b>Sobre {{valor}} e dados já registrados pela sonda {{sonda}}</b></h1>
+
+            <p id="titulo"><b>Fotos</b></p>
+            <div class="imagens">
+                <div class="planeta">
+                    <p>{{valor}}</p>
+                    <img src="{{ url_for('static', filename=planet) }}" alt="{{valor}}" class="imagem-ajustada">
+                </div>
+                <div class="sonda">
+                    <p>{{sonda}}</p>
+                    <img src="{{ url_for('static', filename=img_sonda) }}" alt="{{valor}}" class="imagem-ajustada">
+                </div>
+                <div class="lua">
+                    {% for nome, lua in luas_e_nomes %}
+                    <div class="lua-item">
+                        <p>{{nome}}</p>
+                        <img src="{{ url_for('static', filename=lua) }}" alt="{{ nome }}" class="imagem-ajustada">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <p id="titulo"><b>Sobre {{valor}}</b></p>
+            <div class="infos">
+                <p>Distância do Sol: {{sol}} km <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Periodo orbital: {{orbita}} <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Área da Superfície: {{superficie}} km² <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Duração do dia: {{dia}} <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Gravidade: {{gravidade}} m/s² <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Temperatura do planeta: {{temperatura}}°C <a href="{{link}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p></p>
+                <p>Luas: {{moons}}</p>
+                <p>Sonda {{sonda}}: <span>{{info}}</span> <a href="{{fonte}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -1180 960 960" width="30px" ><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg></a></p>
+            </div>
+            <p id="titulo"><b>Dados Coletados pela {{sonda}}</b></p>
+            <div class="infos">
+                {% for dados in dados_coletados %}
+                <p>{{dados}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
