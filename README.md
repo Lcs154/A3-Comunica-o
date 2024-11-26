@@ -22,6 +22,8 @@ Tutorial 👍(usei o VScode com Python 3.12.7):
   Ainda dentro do terminal, execute o comando para configurar o ambiente (se a versão do python for inferior pode ser que não funcione):
   pip install -r requirements.txt
 
+  Caso não funcione, tente nome_do_ambiente_virtual/requirements.txt
+
   6° - Ambiente pronto!
 
   OBS: (para evitar erros, evite apagar qualquer pasta/arquivo que for criada no ambiente)
