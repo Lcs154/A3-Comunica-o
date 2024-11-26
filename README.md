@@ -20,6 +20,6 @@ Tutorial 👍(usei o VScode com Python 3.12.7):
   Ainda dentro do terminal, execute o comando para configurar o ambiente (se a versão do python for inferior pode ser que não funcione):
   pip install -r requirements.txt
 
-  6° - Pronto pra ser executado meu/minha nobre, já pode usar!
+  6° - Ambiente pronto!
 
-  OBS: (para evitar erros, evita apagar qualquer coisa q for criada no ambiente)
+  OBS: (para evitar erros, evite apagar qualquer pasta/arquivo que for criada no ambiente)
