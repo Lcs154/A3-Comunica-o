@@ -1,3 +1,5 @@
+Projeto criado com o intuito de mostrar uma aplicação do MMC para sincronizar satélites de acordo com a rotação dos planetas
+
 Tutorial 👍(usei o VScode com Python 3.12.7):
 
   1° - Abra um novo Terminal de comando
